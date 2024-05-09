@@ -58,15 +58,19 @@ public abstract class Celular {
 				JOptionPane.showMessageDialog(null, "Llamada exitosa");
 				this.setBateria(this.getBateria()-this.getPerdidaBateria()*duracion);
 				celular.setBateria(celular.getBateria()-celular.getPerdidaBateria()*duracion);
-
+				return true;
 			} else {
+				JOptionPane.showMessageDialog(null, "La llamada dura más que la bateria disponible");
+				return false;
 
 			}
 		} else {
+			JOptionPane.showMessageDialog(null, "Alguno de los celulares esta apagado");
+			return false;
 
 		}
 		
-		return true;
+		
 	}
 	public boolean VerEstado() {
 		if (this.getBateria()==0) {
