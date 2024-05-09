@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 
 public abstract class Celular {
 	private String marca;
@@ -48,15 +49,37 @@ public abstract class Celular {
 		return "Celular [marca=" + marca + ", modelo=" + modelo + ", persona=" + persona + ", bateria=" + bateria
 				+ ", perdidaBateria=" + perdidaBateria + "]";
 	}
+	//> <
 	public boolean HacerLlamada(int duracion,Celular celular) {
+		if (this.VerEstado() && celular.VerEstado()) {
+			if (this.getPerdidaBateria()*duracion < this.getBateria() &&
+					celular.getPerdidaBateria()*duracion < celular.getBateria()) {
+				
+				JOptionPane.showMessageDialog(null, "Llamada exitosa");
+				this.setBateria(this.getBateria()-this.getPerdidaBateria()*duracion);
+				celular.setBateria(celular.getBateria()-celular.getPerdidaBateria()*duracion);
+
+			} else {
+
+			}
+		} else {
+
+		}
+		
 		return true;
 	}
 	public boolean VerEstado() {
-		return true;
+		if (this.getBateria()==0) {
+			return false;
+		} else {
+			return true;
+
+		}
+	
 
 	}
 	public void RecargarCelular() {
-		
+		this.setBateria(5);
 	}
 	
 	
